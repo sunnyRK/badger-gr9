@@ -67,7 +67,7 @@ contract IdleBadger is ILendingProtocol, Ownable {
   function nextSupplyRateWithParams(uint256[] calldata)
     external view override
     returns (uint256) {
-      return ICErc20(cErc20).exchangeRateStored();
+    return 0;
   }
 
   /**
@@ -77,10 +77,7 @@ contract IdleBadger is ILendingProtocol, Ownable {
    * @return : yearly net rate
    */
   function nextSupplyRate(uint256 _amount) public override view returns (uint256) {
-    (bool success, bytes memory data) =
-        token.staticcall(abi.encodeWithSelector(IBarnBridge.maxBondDailyRate.selector));
-    require(success && data.length >= 32);
-    return abi.decode(data, (uint256));
+    return 0;
   }
 
   /**
