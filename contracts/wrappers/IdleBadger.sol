@@ -49,7 +49,7 @@ contract IdleBadger is ILendingProtocol, Ownable {
     require(_token != address(0), 'bBadger: addr is 0');
 
     token = _token;
-    underlying = address(IBarnBridge(_token).token());
+    underlying = address(IBadger(_token).token());
     idleToken = _idleToken;
     IERC20(underlying).safeApprove(token, 0);
     IERC20(underlying).safeApprove(token, uint256(-1));
